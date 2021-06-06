@@ -8,7 +8,7 @@ resource "aws_lambda_function" "lambda" {
   role          = aws_iam_role.lambda_role.arn
 
   filename         = var.package
-  source_code_hash = base64sha256(file(var.package))
+  source_code_hash = filebase64sha256(var.package)
   publish          = true
 
   tags = var.tags
